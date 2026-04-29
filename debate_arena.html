@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Debate Arena - Final Demo</title>
+<style>
+body { margin:0; font-family: Arial; background:#0b1220; color:#fff; }
+header { text-align:center; padding:18px; font-size:26px; font-weight:bold; }
+.sub { text-align:center; opacity:0.7; margin-bottom:10px; }
+.container { max-width:1000px; margin:auto; padding:20px; }
+button { width:100%; padding:12px; border-radius:10px; border:none; background:#6366f1; color:white; cursor:pointer; font-size:16px; margin-top:10px; }.controls { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px; } select, input { width:100%; padding:10px; border-radius:8px; border:none; margin-top:5px; }
+
+.debate { display:flex; gap:12px; margin-top:20px; }
+
+.column { flex:1; background:#111a2e; border-radius:12px; padding:10px; display:flex; flex-direction:column; }
+
+.aiHeader { display:flex; align-items:center; gap:10px; padding:10px; border-bottom:1px solid rgba(255,255,255,0.1); } .avatar { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; } .ai1Avatar { background:#3b82f6; } .ai2Avatar { background:#ef4444; }
+
+.aiTitle { font-weight:bold; } .aiSub { font-size:12px; opacity:0.6; }
+
+.chat { padding:10px; height:320px; overflow-y:auto; }
+
+.msg { padding:10px; border-radius:10px; margin-bottom:10px; font-size:14px; line-height:1.3; } .ai1Msg { background:#1e3a8a; } .ai2Msg { background:#7f1d1d; }
+
+.judge { margin-top:15px; background:#0f172a; padding:12px; border-radius:10px; font-size:14px; border:1px solid rgba(255,255,255,0.1); }
+
+.typing { opacity:0.6; font-style:italic; } </style>
+
+</head>
+<body><header>⚔️ AI Debate Arena</header>
+<div class="sub">Demo sequenziale: due AI che si alternano davvero</div><div class="container"><p><strong>Tema fisso:</strong> Guerra in Ucraina - negoziare o continuare il conflitto?</p><div class="controls">
+  <div>
+    <label>AI 1 - Stile</label>
+    <select id="style1">
+      <option>Strategico</option>
+      <option>Logico</option>
+      <option>Difensivo</option>
+      <option>Realista</option>
+    </select>
+  </div>
+  <div>
+    <label>AI 2 - Stile</label>
+    <select id="style2">
+      <option>Umanitario</option>
+      <option>Critico</option>
+      <option>Analitico</option>
+      <option>Pessimista</option>
+    </select>
+  </div>
+</div><button onclick="runDemo()">▶ Avvia Dibattito</button>
+
+<div class="debate">  <div class="column">
+    <div class="aiHeader">
+      <div class="avatar ai1Avatar">A1</div>
+      <div>
+        <div class="aiTitle">AI 1</div>
+        <div class="aiSub">Posizione strategica</div>
+      </div>
+    </div>
+    <div class="chat" id="ai1"></div>
+  </div>  <div class="column">
+    <div class="aiHeader">
+      <div class="avatar ai2Avatar">A2</div>
+      <div>
+        <div class="aiTitle">AI 2</div>
+        <div class="aiSub">Posizione negoziale</div>
+      </div>
+    </div>
+    <div class="chat" id="ai2"></div>
+  </div></div><div class="judge" id="judge"></div></div><script>
+
+function wait(ms) {
+  return new Promise(r => setTimeout(r, ms));
+}
+
+async function runDemo() {
+
+  const ai1 = document.getElementById("ai1");
+  const ai2 = document.getElementById("ai2");
+  const judge = document.getElementById("judge");
+
+  ai1.innerHTML = "";
+  ai2.innerHTML = "";
+  judge.innerHTML = "";
+
+  const style1 = document.getElementById("style1").value;
+  const style2 = document.getElementById("style2").value;
+
+  const ai1Messages = [
+    `(${style1}) Continuare il conflitto è necessario per evitare future aggressioni geopolitiche.`,
+    `Una pace immediata potrebbe essere instabile e favorire nuove escalation.`,
+    `La deterrenza militare è essenziale per proteggere la sovranità degli Stati.`
+  ];
+
+  const ai2Messages = [
+    `(${style2}) Il costo umano della guerra cresce ogni giorno ed è insostenibile.`,
+    `La diplomazia può prevenire ulteriori perdite e stabilizzare la regione.`,
+    `I conflitti prolungati raramente portano a soluzioni durature.`
+  ];
+
+  for (let i = 0; i < ai1Messages.length; i++) {
+
+    // AI1 parla
+    ai1.innerHTML += `<div class='msg ai1Msg'>${ai1Messages[i]}</div>`;
+    ai1.scrollTop = ai1.scrollHeight;
+
+    await wait(1500);
+
+    // AI2 risponde
+    ai2.innerHTML += `<div class='msg ai2Msg'>${ai2Messages[i]}</div>`;
+    ai2.scrollTop = ai2.scrollHeight;
+
+    await wait(1500);
+  }
+
+  judge.innerHTML = "🧠 <b>Giudice:</b> L'approccio negoziale risulta più forte sul piano umanitario, mentre quello strategico è più solido nel lungo periodo. Nessuna posizione è assoluta vincitrice.";
+}
+
+</script></body>
+</html>
