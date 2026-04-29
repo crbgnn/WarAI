@@ -31,7 +31,7 @@ button { width:100%; padding:12px; border-radius:10px; border:none; background:#
 <div class="sub">Discussione strutturata tra due intelligenze artificiali</div><div class="container"><p><strong>Scegli argomento:</strong></p>
 <select id="topic">
   <option value="ukraine">Guerra in Ucraina: negoziare o continuare il conflitto?</option>
-  <option value="ai">Regolamentazione dell'AI: libertà totale o controllo severo?</option>
+  <option value="ai">Regolamentazione dell’AI: libertà totale o controllo severo?</option>
 </select><button onclick="runDemo()">▶ Avvia Dibattito</button>
 
 <div class="debate">  <div class="column">
@@ -72,7 +72,7 @@ async function runDemo(){
 
   if(topic === "ukraine"){
     a1 = [
-      "Continuare il supporto militare è necessario: una pace senza deterrenza premia l'aggressione e indebolisce il diritto internazionale.",
+      "Continuare il supporto militare è necessario: una pace senza deterrenza premia l’aggressione e indebolisce il diritto internazionale.",
       "Il rischio di escalation esiste, ma la storia mostra che le concessioni senza condizioni spesso portano a nuovi conflitti più gravi.",
       "Una pace stabile richiede equilibrio di forza, non solo diplomazia idealistica."
     ];
@@ -86,14 +86,14 @@ async function runDemo(){
 
   if(topic === "ai"){
     a1 = [
-      "Una regolamentazione eccessiva dell'AI potrebbe frenare innovazione e competitività globale, lasciando spazio ad altri paesi meno vincolati.",
+      "Una regolamentazione eccessiva dell’AI potrebbe frenare innovazione e competitività globale, lasciando spazio ad altri paesi meno vincolati.",
       "Il rischio deve essere gestito con auto-regolazione del settore piuttosto che con leggi rigide e lente.",
-      "La libertà tecnologica è fondamentale per lo sviluppo futuro dell'umanità."
+      "La libertà tecnologica è fondamentale per lo sviluppo futuro dell’umanità."
     ];
 
     a2 = [
-      "Senza regole chiare, l'AI può amplificare disinformazione, disuguaglianze e rischi sistemici difficili da controllare.",
-      "L'auto-regolazione ha già fallito in molti settori tecnologici del passato.",
+      "Senza regole chiare, l’AI può amplificare disinformazione, disuguaglianze e rischi sistemici difficili da controllare.",
+      "L’auto-regolazione ha già fallito in molti settori tecnologici del passato.",
       "Serve un equilibrio tra innovazione e sicurezza pubblica, non crescita incontrollata."
     ];
   }
